@@ -1,7 +1,7 @@
 # Filename: Makefile
 
 AR := ar
-CC := c99
+CC := gcc
 CXX := g++
 
 GENHTML := genhtml
