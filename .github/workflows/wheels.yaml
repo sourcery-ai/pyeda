@@ -25,7 +25,9 @@ jobs:
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BEFORE_ALL: >
-            make -C extension/boolexpr all
+            cd extension/boolexpr
+            && make all
+            && cd ../..
 
       - uses: actions/upload-artifact@v3
         with:
