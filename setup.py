@@ -4,12 +4,9 @@ import os
 import sys
 from os.path import join as pjoin
 
-import pyeda
+from setuptools import setup, Extension
 
-try:
-    from setuptools import setup, Extension
-except ImportError:
-    from distutils.core import setup, Extension
+import pyeda
 
 NAME = pyeda.__name__
 
