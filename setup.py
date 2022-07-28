@@ -1,8 +1,8 @@
 # Filename: setup.py
 
-import os
 import sys
 from os.path import join as pjoin
+from pathlib import Path
 
 from setuptools import setup, Extension
 
@@ -138,24 +138,24 @@ EXPRNODE = dict(
         ('NDEBUG', None),
     ],
     include_dirs = [
-        pjoin('extension', 'boolexpr'),
+        Path('extension', 'boolexpr').as_posix(),
     ],
     sources = [
-        pjoin('extension', 'boolexpr', 'argset.c'),
-        pjoin('extension', 'boolexpr', 'array.c'),
-        pjoin('extension', 'boolexpr', 'binary.c'),
-        pjoin('extension', 'boolexpr', 'boolexpr.c'),
-        pjoin('extension', 'boolexpr', 'bubble.c'),
-        pjoin('extension', 'boolexpr', 'compose.c'),
-        pjoin('extension', 'boolexpr', 'dict.c'),
-        pjoin('extension', 'boolexpr', 'flatten.c'),
-        pjoin('extension', 'boolexpr', 'nnf.c'),
-        pjoin('extension', 'boolexpr', 'product.c'),
-        pjoin('extension', 'boolexpr', 'set.c'),
-        pjoin('extension', 'boolexpr', 'simple.c'),
-        pjoin('extension', 'boolexpr', 'util.c'),
-        pjoin('extension', 'boolexpr', 'vector.c'),
-        pjoin('pyeda', 'boolalg', 'exprnodemodule.c'),
+        Path('extension', 'boolexpr', 'argset.c').as_posix(),
+        Path('extension', 'boolexpr', 'array.c').as_posix(),
+        Path('extension', 'boolexpr', 'binary.c').as_posix(),
+        Path('extension', 'boolexpr', 'boolexpr.c').as_posix(),
+        Path('extension', 'boolexpr', 'bubble.c').as_posix(),
+        Path('extension', 'boolexpr', 'compose.c').as_posix(),
+        Path('extension', 'boolexpr', 'dict.c').as_posix(),
+        Path('extension', 'boolexpr', 'flatten.c').as_posix(),
+        Path('extension', 'boolexpr', 'nnf.c').as_posix(),
+        Path('extension', 'boolexpr', 'product.c').as_posix(),
+        Path('extension', 'boolexpr', 'set.c').as_posix(),
+        Path('extension', 'boolexpr', 'simple.c').as_posix(),
+        Path('extension', 'boolexpr', 'util.c').as_posix(),
+        Path('extension', 'boolexpr', 'vector.c').as_posix(),
+        Path('pyeda', 'boolalg', 'exprnodemodule.c').as_posix(),
     ],
     extra_compile_args = ['--std=c99'],
 )

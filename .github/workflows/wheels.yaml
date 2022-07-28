@@ -25,9 +25,7 @@ jobs:
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BEFORE_ALL: >
-            cd extension/boolexpr
-            && make bld/lib/libboolexpr.a
-            && cd ../..
+            make -C extension/boolexpr bld/lib/libboolexpr.a
         shell: bash
 
       - uses: actions/upload-artifact@v3
