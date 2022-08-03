@@ -24,7 +24,7 @@ jobs:
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
-          CIBW_TEST_REQUIRES: pytest
+          CIBW_TEST_REQUIRES: pytest nose
           CIBW_TEST_COMMAND: python -m pytest --pyargs pyeda
         shell: bash
 
