@@ -183,9 +183,9 @@ if sys.platform == 'win32':
     ]
 
 EXT_MODULES = [
-    # Extension('pyeda.boolalg.espresso', **ESPRESSO),
-    # Extension('pyeda.boolalg.exprnode', **EXPRNODE),
-    # Extension('pyeda.boolalg.picosat', **PICOSAT),
+    Extension('pyeda.boolalg.espresso', **ESPRESSO),
+    Extension('pyeda.boolalg.exprnode', **EXPRNODE),
+    Extension('pyeda.boolalg.picosat', **PICOSAT),
 ]
 
 SCRIPTS = [

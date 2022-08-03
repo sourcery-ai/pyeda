@@ -19,13 +19,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.8.1 setuptools
+        run: python -m pip install cibuildwheel==2.8.1 setuptools pytest
 
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
-          CIBW_BEFORE_ALL: >
-            make -C extension/boolexpr bld/lib/libboolexpr.a
+          CIBW_TEST_COMMAND: python -m pytest --pyargs pyeda
         shell: bash
 
       - uses: actions/upload-artifact@v3
