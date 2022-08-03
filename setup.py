@@ -208,7 +208,5 @@ setup(
     packages=PACKAGES,
     ext_modules=EXT_MODULES,
     scripts=SCRIPTS,
-
-    test_suite='nose.collector',
 )
 
