@@ -90,7 +90,40 @@ ESPRESSO = dict(
     include_dirs = [
         pjoin('thirdparty', 'espresso', 'src'),
     ],
-    sources = [
+)
+
+# exprnode C extension
+EXPRNODE = dict(
+    define_macros = [
+        ('NDEBUG', None),
+    ],
+    include_dirs = [
+        pjoin('extension', 'boolexpr'),
+    ],
+    extra_compile_args = ['--std=c99'],
+)
+
+# PicoSAT C extension
+with open(pjoin('thirdparty', 'picosat', 'VERSION')) as fin:
+    PICOSAT_VERSION = '"' + fin.read().strip() + '"'
+
+PICOSAT = dict(
+    define_macros = [
+        ('NDEBUG', None),
+    ],
+    include_dirs = [
+        pjoin('thirdparty', 'picosat'),
+    ],
+)
+
+if sys.platform == 'win32':
+    PICOSAT['define_macros'] += [
+        ('NGETRUSAGE', None),
+        ('inline', '__inline'),
+    ]
+
+EXT_MODULES = [
+    Extension('pyeda.boolalg.espresso', [
         pjoin('thirdparty', 'espresso', 'src', 'cofactor.c'),
         pjoin('thirdparty', 'espresso', 'src', 'cols.c'),
         pjoin('thirdparty', 'espresso', 'src', 'compl.c'),
@@ -128,18 +161,8 @@ ESPRESSO = dict(
         pjoin('thirdparty', 'espresso', 'src', 'unate.c'),
         pjoin('thirdparty', 'espresso', 'src', 'verify.c'),
         pjoin('pyeda', 'boolalg', 'espressomodule.c'),
-    ],
-)
-
-# exprnode C extension
-EXPRNODE = dict(
-    define_macros = [
-        ('NDEBUG', None),
-    ],
-    include_dirs = [
-        pjoin('extension', 'boolexpr'),
-    ],
-    sources = [
+    ], **ESPRESSO),
+    Extension('pyeda.boolalg.exprnode', [
         pjoin('extension', 'boolexpr', 'argset.c'),
         pjoin('extension', 'boolexpr', 'array.c'),
         pjoin('extension', 'boolexpr', 'binary.c'),
@@ -155,37 +178,11 @@ EXPRNODE = dict(
         pjoin('extension', 'boolexpr', 'util.c'),
         pjoin('extension', 'boolexpr', 'vector.c'),
         pjoin('pyeda', 'boolalg', 'exprnodemodule.c'),
-    ],
-    extra_compile_args = ['--std=c99'],
-)
-
-# PicoSAT C extension
-with open(pjoin('thirdparty', 'picosat', 'VERSION')) as fin:
-    PICOSAT_VERSION = '"' + fin.read().strip() + '"'
-
-PICOSAT = dict(
-    define_macros = [
-        ('NDEBUG', None),
-    ],
-    include_dirs = [
-        pjoin('thirdparty', 'picosat'),
-    ],
-    sources = [
+    ], **EXPRNODE),
+    Extension('pyeda.boolalg.picosat', [
         pjoin('thirdparty', 'picosat', 'picosat.c'),
         pjoin('pyeda', 'boolalg', 'picosatmodule.c'),
-    ],
-)
-
-if sys.platform == 'win32':
-    PICOSAT['define_macros'] += [
-        ('NGETRUSAGE', None),
-        ('inline', '__inline'),
-    ]
-
-EXT_MODULES = [
-    Extension('pyeda.boolalg.espresso', **ESPRESSO),
-    Extension('pyeda.boolalg.exprnode', **EXPRNODE),
-    Extension('pyeda.boolalg.picosat', **PICOSAT),
+    ], **PICOSAT),
 ]
 
 SCRIPTS = [
