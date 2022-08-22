@@ -28,6 +28,3 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           path: ./wheelhouse/*.whl
-      
-      - name: Test import from pyeda
-        run: python -c "from pyeda.boolalg.expr import And"
