@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [ubuntu-latest, windows-latest]
         python-version: ["3.7", "3.8", "3.9", "3.10"]
 
     steps:
@@ -28,3 +28,8 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           path: ./wheelhouse/*.whl
+
+      - name: Test import from PyEDA
+        run: |
+          python install wheelhouse/
+          python -c "from pyeda.inter import And"
