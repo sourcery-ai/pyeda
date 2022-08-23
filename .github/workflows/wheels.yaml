@@ -31,5 +31,5 @@ jobs:
 
       - name: Test import from PyEDA
         run: |
-          python install wheelhouse/
+          python -m pip install wheelhouse/*.whl
           python -c "from pyeda.inter import And"
