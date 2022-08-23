@@ -205,6 +205,5 @@ setup(
     packages=PACKAGES,
     ext_modules=EXT_MODULES,
     scripts=SCRIPTS,
-    include_package_data=True
 )
 
