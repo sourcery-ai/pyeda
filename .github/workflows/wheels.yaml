@@ -33,3 +33,4 @@ jobs:
         run: |
           python -m pip install wheelhouse/*.whl
           python -I -c "from pyeda.inter import And"
+        shell: bash
