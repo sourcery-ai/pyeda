@@ -3,7 +3,7 @@
 import sys
 from os.path import join as pjoin
 
-from setuptools import Extension, setup
+from setuptools import Extension, find_packages, setup
 
 import pyeda
 
@@ -202,7 +202,7 @@ setup(
     url=URL,
     download_url=DOWNLOAD_URL,
     classifiers=CLASSIFIERS,
-    packages=PACKAGES,
+    packages=find_packages(),
     ext_modules=EXT_MODULES,
     scripts=SCRIPTS,
 )
