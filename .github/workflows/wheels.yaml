@@ -23,7 +23,7 @@ jobs:
         with:
           output-dir: wheelhouse
         env:
-          CIBW_ARCHS: ["AMD64"]
+          CIBW_ARCHS: "AMD64"
 
       - uses: actions/upload-artifact@v3
         with:
