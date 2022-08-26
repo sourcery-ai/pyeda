@@ -34,6 +34,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           path: ./wheelhouse/*.whl
+          name: wheels
 
   test_wheels:
     needs: build_wheels
@@ -56,10 +57,10 @@ jobs:
       - name: Download wheels
         uses: actions/download-artifact@v3
         with:
-          path: ./pyeda-*-cp${{ matrix.python-version[1] }}-cp${{ matrix.python-version[1] }}-win_amd64*.whl
+          name: wheels
 
       - name: Install wheels
-        run: python -m pip install ./pyeda-*-cp${{ matrix.python-version[1] }}-cp${{ matrix.python-version[1] }}-win_amd64*.whl
+        run: python -m pip install ./wheelhouse/pyeda-0.28.0-cp${{ matrix.python-version[1] }}-cp${{ matrix.python-version[1] }}-win_amd64.whl
         shell: bash
 
       - name: Test import
